@@ -2,3 +2,88 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct no{
+  float valor;
+  struct no *proximo;
+  }No;
+  No* empilhar(No *pilha, float num){
+    No *novo = malloc(sizeof(No));
+    
+    if(novo){
+      novo -> valor = num;
+      novo -> proximo = pilha;
+      return novo;
+      }
+      
+      else
+        printf("\n Erro ao alocar memória!\n");
+      return NULL;
+      
+      }
+  No* desempilhar(No* *pilha){
+    No *remover = NULL;
+    if(*pilha){
+      remover = *pilha;
+      *pilha = remover -> proximo;
+        
+        }
+      else
+        printf("\nPilha Vazia!\n");
+        return remover;
+          }
+          
+      float resolver_expressao(char x[]){
+        char *pt;
+        No *n1, *n2, *pilha = NULL;
+        float num;
+        pt = strtok(x," ");
+        while(pt){
+          if(pt[0] == '+'||pt[0]=='-'||pt[0] == '/'||pt[0] == '*')
+          n1 = desempilhar(&pilha);
+          n2 = desempilhar(&pilha);
+          num = operacao (n1 -> valor, n2 -> valor, pt[0]);
+          pilha = empilhar(pilha, num);
+          free(n1);
+          free(n2);
+          }
+          
+          else{
+            num = strtol(pt, NULL, 10);
+            pilha = empilhar(pilha,num);
+            
+            }
+            n1 = desempilhar(&pilha);
+            num = n1 -> valor;
+            free(n1);
+            return num;
+            
+            }
+            
+            float operacao(float a, float b, char x){
+              switch(x){
+              case '+':
+                return a+b;
+                break;
+                
+              case '-':
+                return a-b;
+                break;
+                
+              case '/':
+                return a/b;
+                break;
+                
+              case '*':
+                return a*b;
+                break;
+                
+              default:
+                return 0.0;
+                }
+              }
+          
+int main(){ \\criar o pedido da expressao pos-fixa printf scanf
+  char exp[50];
+  printf("Resultado de %s : %f\n", exp, resolver_expressao(exp));
+  }
+  
