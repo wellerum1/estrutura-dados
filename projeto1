@@ -144,8 +144,9 @@ int main (){
     char exp[50];
     
     printf("\nEntre com a expressão em notação pós-fixa:\n");
-    scanf("%s", exp);
+    gets(exp);
   
-    printf ("Resultado de %s : %f\n", exp, resolver_expressao(exp));
+    printf("Resultado de %s:\t", exp);
+    printf("%f\n", resolver_expressao(exp));
 
 }
