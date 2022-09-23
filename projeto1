@@ -141,7 +141,6 @@ float resolver_expressao(char x[]){
 
 int main (){
     
-  //criar o pedido da expressao pos - fixa printf scanf 
     char exp[50];
     
     printf("\nEntre com a expressão em notação pós-fixa:\n");
