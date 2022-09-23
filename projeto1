@@ -147,6 +147,6 @@ int main (){
     gets(exp);
   
     printf("Resultado de %s:\t", exp);
-    printf("%f\n", resolver_expressao(exp));
+    printf("\n\n%f\n", resolver_expressao(exp));
 
 }
